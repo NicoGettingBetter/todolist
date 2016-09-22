@@ -24,5 +24,19 @@ app.factory('projects', ['$http', function($http){
     })
   }
 
+  object.addTask = function(task) {
+    return $http.post('/projects/' + task.project_id + '/tasks.json', task);
+  };
+
+  object.removeTask = function(task) {
+    var project = object.projects.find(function(project){
+      return project.id === task.project_id;
+    });
+    var task_i = project.tasks.indexOf(task);
+    return $http.delete('/projects/' + task.project_id + '/tasks/' + task.id + '.json').success(function(){
+      project.tasks.splice(task_i, 1);
+    });
+  };
+
   return object;
 }]);
