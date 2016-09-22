@@ -1,0 +1,9 @@
+<li>
+  {{ project.title }}
+  <button ng-click="removeProject()">X</button>
+  </br>
+  <task-form project="project"/>
+  <ul>
+    <task-item task="task" ng-repeat="task in project.tasks"/>
+  </ul>
+</li>
