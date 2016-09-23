@@ -1,6 +1,19 @@
-%li
-  %input{"ng-model" => "task.title"}
-  %button{"ng-click" => "removeTask()"} X
-  %comment-form{task: "task"}
-  %ul
-    %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment"}
+%li.p5
+  .input-group
+    %span.input-group-addon
+      %input{type: "checkbox", "ng-model" => "task.done"}
+    %input.form-control{"ng-model" => "task.title"}
+    .input-group-btn
+      %button.btn.btn-default{disabled: "disabled"} {{ priorities[task.priority] }}
+      %button.btn.btn-default{"ng-click" => "higher()"} 
+        %span.glyphicon.glyphicon-chevron-up
+      %button.btn.btn-default{"ng-click" => "lower()"}
+        %span.glyphicon.glyphicon-chevron-down
+      %button.btn.btn-default{"ng-click" => "toggleComments()"}
+        %span.glyphicon.glyphicon-comment
+      %button.btn.btn-default{"ng-click" => "removeTask()"}
+        %span.glyphicon.glyphicon-remove
+  %div{"ng-hide" => "task.hideComments"}
+    %comment-form{task: "task"}
+    %ul
+      %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment"}

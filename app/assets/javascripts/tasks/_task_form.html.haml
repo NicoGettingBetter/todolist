@@ -1,2 +1,4 @@
-%input{"ng-model" => "title", type: "text"}
-%button{"ng-click" => "addTask()"} Add
+.p5.input-group.task-form
+  %input.form-control{"ng-model" => "title", type: "text"}
+  %span.input-group-btn
+    %button.btn.task-btn-add{"ng-click" => "addTask()"} Add task

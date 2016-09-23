@@ -1,2 +1,5 @@
-%input{"ng-model" => "title", type: "text"}
-%button{"ng-click" => "addProject()"} Add
+.col-lg-3
+.col-lg-6.input-group
+  %input.form-control{"ng-model" => "title", type: "text"}
+  %span.input-group-btn
+    %button.btn.project-btn-add{"ng-click" => "addProject()"} Add TODO list

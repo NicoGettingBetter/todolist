@@ -1,3 +1,4 @@
-%li
-  %input{"ng-model" => "comment.text"}
-  %button{"ng-click" => "removeComment()"} X
+%li.p5.input-group
+  %input.form-control{"ng-model" => "comment.text"}
+  %span.input-group-btn
+    %button.btn.btn-default{"ng-click" => "removeComment()"} X

@@ -14,7 +14,10 @@ app.directive('commentForm', function(){
           task_id: $scope.task.id,
           file: $scope.file
         }).success(function(data){
-          $scope.task.comments.push(data);
+          if ($scope.task.comments)
+            $scope.task.comments.push(data);
+          else
+            $scope.task.comments = [data];
         });
 
         $scope.text = '';

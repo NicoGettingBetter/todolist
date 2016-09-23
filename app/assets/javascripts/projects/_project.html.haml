@@ -1,7 +1,12 @@
-%li
-  %input{"ng-model" => "project.title"}
-  %button{"ng-click" => "removeProject()"} X
-  %br
+%li.project-item
+  .input-group.project-head
+    %span.input-group-btn
+      %button.btn.btn-symbol{disabled: "disabled"}
+        %span.glyphicon.glyphicon-list-alt
+    %input.form-control.project-input{"ng-model" => "project.title"}
+    %span.input-group-btn
+      %button.btn.project-btn-del{"ng-click" => "removeProject()"}
+        %span.glyphicon.glyphicon-remove
   %task-form{project: "project"}
   %ul
     %task-item{"ng-repeat" => "task in project.tasks | orderBy:'priority'", task: "task"}

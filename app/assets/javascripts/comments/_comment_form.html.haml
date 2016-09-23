@@ -1,2 +1,4 @@
-%input{"ng-model" => "text", type: "text"}
-%button{"ng-click" => "addComment()"} Add
+.p5.input-group
+  %input.form-control{"ng-model" => "text", type: "text"}
+  %span.input-group-btn
+    %button.btn.btn-default{"ng-click" => "addComment()"} Add comment
