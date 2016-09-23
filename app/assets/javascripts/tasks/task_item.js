@@ -11,6 +11,15 @@ app.directive('taskItem', function(){
       $scope.removeTask = function(){
         projects.removeTask($scope.task);
       }
-    }]
+
+      $scope.updateTask = function(){
+        projects.updateTask($scope.task);
+      }
+    }],
+    link: function($scope){
+      $scope.$watch('task.title', function(task){
+        $scope.updateTask();
+      })
+    }
   }
 });

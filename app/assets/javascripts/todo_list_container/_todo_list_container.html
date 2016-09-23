@@ -1,4 +1,4 @@
 <project-form/>
 <ul>
-  <project-item project="project" ng-repeat="project in projects"/>
+  <project-item project="project" ng-repeat="project in projects | orderBy:'id'"/>
 </ul>

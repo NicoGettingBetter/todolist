@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:update, :destroy]
   def index
     respond_with Project.all
   end
@@ -9,22 +8,17 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    project = Project.find_by(id: params[:id])
     respond_with project.update(project_params)
   end
 
   def destroy
     project = Project.find_by(id: params[:id])
     Task.delete project.tasks
-    project.delete
-    respond_with :ok
+    respond_with project.destroy
   end
 
   private
-
-    def set_project
-      project = Project.find_by(id: params[:id])
-    end
-
     def project_params
       params.require(:project).permit(:title)
     end

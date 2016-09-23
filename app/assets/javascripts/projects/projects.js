@@ -24,6 +24,10 @@ app.factory('projects', ['$http', function($http){
     })
   }
 
+  object.update = function(project) {
+    return $http.put('/projects/' + project.id + '.json', project)
+  }
+
   object.addTask = function(task) {
     return $http.post('/projects/' + task.project_id + '/tasks.json', task);
   };
@@ -36,6 +40,10 @@ app.factory('projects', ['$http', function($http){
     return $http.delete('/projects/' + task.project_id + '/tasks/' + task.id + '.json').success(function(){
       project.tasks.splice(task_i, 1);
     });
+  };
+
+  object.updateTask = function(task) {
+    return $http.put('/projects/' + task.project_id + '/tasks/' + task.id + '.json', task);
   };
 
   return object;

@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   def create
     project = Project.find_by(id: params[:project_id])
-    respond_with project, project.tasks.create(task_params)#, location: project_tasks_url
+    respond_with project, project.tasks.create(task_params)
   end
 
   def update
     project = Project.find_by(id: params[:project_id])
-    task = project.tasks.find_by(id: params[:id])
-    respond_with project, task.update(task_params)
+    task = project.tasks.find_by(id: params[:id]).update(task_params)
+    respond_with project, task
   end
 
   def show
@@ -15,8 +15,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find_by(id: params[:id])
-    respond_with task.delete
+    project = Project.find_by(id: params[:project_id])
+    task = project.tasks.find_by(id: params[:id])
+    respond_with task.destroy
   end
 
   private
