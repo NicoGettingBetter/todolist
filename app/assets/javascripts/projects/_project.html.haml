@@ -1,0 +1,7 @@
+%li
+  %input{"ng-model" => "project.title"}
+  %button{"ng-click" => "removeProject()"} X
+  %br
+  %task-form{project: "project"}
+  %ul
+    %task-item{"ng-repeat" => "task in project.tasks | orderBy:'priority'", task: "task"}

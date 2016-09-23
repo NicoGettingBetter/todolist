@@ -1,0 +1,6 @@
+%li
+  %input{"ng-model" => "task.title"}
+  %button{"ng-click" => "removeTask()"} X
+  %comment-form{task: "task"}
+  %ul
+    %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment"}

@@ -19,7 +19,7 @@ app.directive('taskItem', function(){
     link: function($scope){
       $scope.$watch('task.title', function(task){
         $scope.updateTask();
-      })
+      });
     }
   }
 });

@@ -46,5 +46,40 @@ app.factory('projects', ['$http', function($http){
     return $http.put('/projects/' + task.project_id + '/tasks/' + task.id + '.json', task);
   };
 
+  object.addComment = function(comment) {
+    var task;
+    object.projects.find(function(project){
+      return task = project.tasks.find(function(task){
+        return comment.task_id === task.id;
+      });
+    });
+    return $http.post('/projects/' + task.project_id + '/tasks/' + task.id + '/comments.json', comment);
+  }
+
+  object.removeComment = function(comment) {
+    var task;
+    object.projects.find(function(project){
+      return task = project.tasks.find(function(task){
+        return comment.task_id === task.id;
+      });
+    });
+    var comment_i = task.comments.indexOf(comment);
+    return $http.delete('/projects/' + task.project_id + '/tasks/' + task.id + '/comments/' + comment.id 
+      + '.json').success(function(){
+        task.comments.splice(comment_i, 1);
+      });
+  }
+
+  object.updateComment = function(comment) {
+    var task;
+    object.projects.find(function(project){
+      return task = project.tasks.find(function(task){
+        return comment.task_id === task.id;
+      });
+    });
+    return $http.put('/projects/' + task.project_id + '/tasks/' + task.id + '/comments/' + comment.id 
+      + '.json', comment);
+  }
+
   return object;
 }]);

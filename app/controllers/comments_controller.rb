@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    respond_with Comment.create(comment_params)
+    project = Project.find_by(id: params[:project_id])
+    task = project.tasks.find_by(id: params[:task_id])
+    respond_with project, task, task.comments.create(comment_params)
   end
 
   def update
@@ -16,6 +18,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:text, :file)
+      params.require(:comment).permit(:text, :file, :task_id)
     end
 end

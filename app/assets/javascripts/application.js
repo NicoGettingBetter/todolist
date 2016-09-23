@@ -23,3 +23,4 @@
 //= require_tree ./todo_list_container
 //= require_tree ./projects
 //= require_tree ./tasks
+//= require_tree ./comments
