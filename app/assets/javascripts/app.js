@@ -16,7 +16,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         projectPromise: ['projects', function(projects){
           return projects.getAll();
         }]
-      }
+      },
+      onEnter: ['$state', 'Auth', function($state, Auth) {
+        if (!Auth.isAuthenticated())
+          $state.go('login');
+      }]
     })
     .state('login', {
       url: '/login',
