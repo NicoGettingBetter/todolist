@@ -8,6 +8,7 @@ app.factory('projects', ['$http', function($http){
   object.getAll = function() {
     return $http.get('/projects.json').success(function(data){
       angular.copy(data, object.projects);
+      console.log(data);
     });
   };
 
@@ -23,6 +24,10 @@ app.factory('projects', ['$http', function($http){
       object.projects.splice(i, 1);
     })
   }
+
+  //object.emptyAll = function() {
+  //  object.projects = [];
+  //}
 
   object.update = function(project) {
     return $http.put('/projects/' + project.id + '.json', project)

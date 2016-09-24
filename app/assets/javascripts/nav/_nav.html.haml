@@ -1,0 +1,11 @@
+.collapse.navbar-collapse.pull-right{"ng-controller" => "NavCtrl"}
+  %ul.nav.navbar-nav
+    %li{"ng-hide" => "signedIn()"}
+      %a.nav-link{href: "#/login"} Log In
+    %li{"ng-hide" => "signedIn()"}
+      %a.nav-link{href: "#/register"} Register
+    %li{"ng-show" => "signedIn()"}
+      %a.nav-link{disabled: "disabled"} {{ user.email }}
+    %li{"ng-show" => "signedIn()"}
+      %a.nav-link{"ng-click" => "logout()"} Log Out
+

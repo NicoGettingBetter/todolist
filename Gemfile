@@ -16,6 +16,11 @@ gem 'sprockets'
 gem 'ng-rails-csrf'
 gem 'responders'
 gem 'bootstrap-datepicker-rails'
+gem 'devise'
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
+gem 'omniauth'
 
 group :development, :test do
   gem 'rspec-rails'

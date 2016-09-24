@@ -16,6 +16,7 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require angular-devise
 
 //= require ng-rails-csrf
 
@@ -29,3 +30,5 @@
 //= require_tree ./projects
 //= require_tree ./tasks
 //= require_tree ./comments
+//= require_tree ./nav
+//= require_tree ./auth

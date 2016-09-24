@@ -1,7 +1,8 @@
 app = angular.module('TodoList', [
   'ui.router',
   'templates',
-  'ng-rails-csrf'
+  'ng-rails-csrf',
+  'Devise'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -16,5 +17,25 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
           return projects.getAll();
         }]
       }
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'auth/_login.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'Auth', function($state, Auth) {
+        Auth.currentUser().then(function (){
+          $state.go('home');
+        })
+      }]
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'auth/_register.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'Auth', function($state, Auth) {
+        Auth.currentUser().then(function (){
+          $state.go('home');
+        })
+      }]
     })
 }]);

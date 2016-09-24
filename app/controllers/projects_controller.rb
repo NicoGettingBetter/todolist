@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    respond_with Project.all
+    respond_with Project.where(user_id: current_user)
   end
 
   def create
-    respond_with Project.create(project_params)
+    respond_with Project.create(project_params.merge(user_id: current_user.id))
   end
 
   def update

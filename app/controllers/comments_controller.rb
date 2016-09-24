@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < ApplicationController  
   def create
     project = Project.find_by(id: params[:project_id])
     task = project.tasks.find_by(id: params[:task_id])
