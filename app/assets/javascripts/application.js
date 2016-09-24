@@ -19,6 +19,11 @@
 
 //= require ng-rails-csrf
 
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
+
 //= require_tree .
 //= require_tree ./todo_list_container
 //= require_tree ./projects

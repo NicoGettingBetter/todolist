@@ -15,6 +15,7 @@ gem 'angular-rails-templates'
 gem 'sprockets'
 gem 'ng-rails-csrf'
 gem 'responders'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'rspec-rails'
