@@ -19,6 +19,11 @@ app.directive('taskItem', function(){
       }
 
       $scope.updateTask = function(){
+        if(!$scope.task.title || $scope.task.title === '') { 
+          $scope.flash.setFlash(['alert', 'Task title cannot be empty'])
+          return; 
+        }
+        
         projects.updateTask($scope.task);
       }
 

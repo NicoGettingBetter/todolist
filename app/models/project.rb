@@ -8,4 +8,6 @@ class Project < ApplicationRecord
       tasks: { include: :comments }
       ]))
   end
+
+  validates_presence_of :title, :user_id
 end

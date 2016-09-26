@@ -14,6 +14,11 @@ app.directive('projectItem', function(){
       }
 
       $scope.updateProject = function(){
+        if(!$scope.project.title || $scope.project.title === '') { 
+          $scope.flash.setFlash(['alert', 'Project title cannot be empty']);
+          return; 
+        }
+        
         projects.update($scope.project);
       }
     }],

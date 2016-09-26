@@ -13,6 +13,11 @@ app.directive('commentItem', function(){
       }
 
       $scope.updateComment = function(){
+        if(!$scope.comment.text || $scope.comment.text === '') { 
+          $scope.flash.setFlash(['alert', 'Comment cannot be empty']);
+          return; 
+        }
+        
         projects.updateComment($scope.comment);
       }
     }],
