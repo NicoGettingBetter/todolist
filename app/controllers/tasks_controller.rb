@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource
+  
   def create
     project = Project.find_by(id: params[:project_id])
     respond_with project, project.tasks.create(task_params)
@@ -8,10 +10,6 @@ class TasksController < ApplicationController
     project = Project.find_by(id: params[:project_id])
     task = project.tasks.find_by(id: params[:id]).update(task_params)
     respond_with project, task
-  end
-
-  def show
-    respond_with Task.find_by(id: params[:id])
   end
 
   def destroy

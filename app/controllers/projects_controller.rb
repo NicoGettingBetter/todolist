@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource  
   before_action :authenticate_user!
   
   def index
@@ -6,7 +7,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    #debugger
     respond_with Project.create(project_params.merge(user_id: current_user.id))
   end
 

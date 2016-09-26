@@ -21,6 +21,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end
 gem 'omniauth'
+gem 'cancancan'
 
 group :development, :test do
   gem 'rspec-rails'

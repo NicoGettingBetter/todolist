@@ -1,4 +1,6 @@
-class CommentsController < ApplicationController  
+class CommentsController < ApplicationController
+  load_and_authorize_resource
+  
   def create
     project = Project.find_by(id: params[:project_id])
     task = project.tasks.find_by(id: params[:task_id])
