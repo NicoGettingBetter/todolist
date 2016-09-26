@@ -1,0 +1,24 @@
+.flash {
+  line-height: 30px;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  &.notice {
+    background: linear-gradient(#4DBB81, #38A061);
+  }
+  &.alert {
+    background: linear-gradient(#FB6D71, #E05851);
+  }
+}
+
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+}

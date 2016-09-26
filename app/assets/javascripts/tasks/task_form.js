@@ -3,12 +3,17 @@ app = angular.module('TodoList');
 app.directive('taskForm', function(){
   return {
     scope:{
-      project: '='
+      project: '=',
+      flash: "="
     },
     templateUrl: 'tasks/_task_form.html',
     controller: ['$scope', 'projects', function($scope, projects){
       $scope.addTask = function(){
-        if(!$scope.title || $scope.title === '') { return; }
+        if(!$scope.title || $scope.title === '') { 
+          $scope.flash.setFlash(['alert', 'Task title cannot be empty'])
+          return; 
+        }
+        
         projects.addTask({
           title: $scope.title,
           project_id: $scope.project.id,

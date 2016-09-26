@@ -7,6 +7,6 @@
     %span.input-group-btn
       %button.btn.project-btn-del{"ng-click" => "removeProject()"}
         %span.glyphicon.glyphicon-remove
-  %task-form{project: "project"}
+  %task-form{project: "project", flash: "flash"}
   %ul
-    %task-item{"ng-repeat" => "task in project.tasks | orderBy:'priority'", task: "task"}
+    %task-item{"ng-repeat" => "task in project.tasks | orderBy:'priority'", task: "task", flash: "flash"}

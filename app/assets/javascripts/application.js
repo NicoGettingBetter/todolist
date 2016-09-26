@@ -32,3 +32,4 @@
 //= require_tree ./comments
 //= require_tree ./nav
 //= require_tree ./auth
+//= require_tree ./flash

@@ -43,3 +43,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }]
     })
 }]);
+
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
+  }
+]);

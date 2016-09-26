@@ -4,7 +4,8 @@ app.directive('taskItem', function(){
   return {
     replace: true,
     scope: {
-      task: '='
+      task: '=',
+      flash: '='
     },
     templateUrl: 'tasks/_task.html',
     controller: ['$scope', 'projects', '$filter', function($scope, projects, $filter){

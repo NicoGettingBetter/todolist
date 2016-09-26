@@ -20,6 +20,6 @@
     %span.input-group-addon
       %i.glyphicon.glyphicon-th
   %div{"ng-hide" => "task.hideComments"}
-    %comment-form{task: "task"}
+    %comment-form{task: "task", flash: "flash"}
     %ul
       %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment"}

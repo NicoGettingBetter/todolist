@@ -4,7 +4,8 @@ app.directive('projectItem', function(){
   return {
     replace: true,
     scope: {
-      project: '='
+      project: '=',
+      flash: '='
     },
     templateUrl: 'projects/_project.html',
     controller: ['$scope', 'projects', function($scope, projects){

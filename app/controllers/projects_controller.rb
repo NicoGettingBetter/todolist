@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    #debugger
     respond_with Project.create(project_params.merge(user_id: current_user.id))
   end
 
