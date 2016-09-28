@@ -5,8 +5,10 @@ class Project < ApplicationRecord
   def as_json(options = {})
     super(options.merge(include: [
       :user,
-      tasks: { include: :comments }
-      ]))
+      tasks: { include: [
+        comments: { include: :file_attachments }
+      ]}
+    ]))
   end
 
   validates_presence_of :title, :user_id

@@ -22,6 +22,8 @@ source "https://rails-assets.org" do
 end
 gem 'omniauth'
 gem 'cancancan'
+gem 'carrierwave'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'rspec-rails'

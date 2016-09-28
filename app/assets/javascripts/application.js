@@ -17,6 +17,7 @@
 //= require angular-ui-router
 //= require angular-rails-templates
 //= require angular-devise
+//= require ng-file-upload
 
 //= require ng-rails-csrf
 

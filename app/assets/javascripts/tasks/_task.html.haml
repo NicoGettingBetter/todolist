@@ -22,4 +22,4 @@
   %div{"ng-hide" => "task.hideComments"}
     %comment-form{task: "task", flash: "flash"}
     %ul
-      %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment"}
+      %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment", flash: "flash"}

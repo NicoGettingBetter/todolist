@@ -81,5 +81,34 @@ app.factory('projects', ['$http', function($http){
       + '.json', comment);
   }
 
+  object.addFile = function(file) {
+    var comment;
+    object.projects.find(function(project){
+      return project.tasks.find(function(task){
+        return comment = task.comments.find(function(comment){
+          return comment.id === file.comment_id;
+        });
+      });
+    });
+    comment.file_attachments.push(file);
+  }
+
+  object.removeFile = function(file) {
+    var task;
+    var comment;
+    object.projects.find(function(project){
+      return task = project.tasks.find(function(task){
+        return comment = task.comments.find(function(comment){
+          return comment.id === file.comment_id;
+        });
+      });
+    });
+    var file_i = comment.file_attachments.indexOf(file);
+    return $http.delete('/projects/' + task.project_id + '/tasks/' + task.id + '/comments/' + comment.id 
+      + '/file_attachments/' + file.id + '.json').success(function(){
+        comment.file_attachments.splice(file_i, 1);
+      });
+  }
+
   return object;
 }]);

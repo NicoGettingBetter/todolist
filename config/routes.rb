@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:create, :update, :destroy, :index] do
     resources :tasks, only: [:create, :update, :destroy, :show] do
-      resources :comments, only: [:create, :update, :destroy]
+      resources :comments, only: [:create, :update, :destroy] do
+        resources :file_attachments, only: [:create, :destroy]
+      end
     end
   end
 end

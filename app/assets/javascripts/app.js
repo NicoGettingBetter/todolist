@@ -2,7 +2,8 @@ app = angular.module('TodoList', [
   'ui.router',
   'templates',
   'ng-rails-csrf',
-  'Devise'
+  'Devise',
+  'ngFileUpload'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

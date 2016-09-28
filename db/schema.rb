@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924171053) do
+ActiveRecord::Schema.define(version: 20160927130408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
-    t.string   "file"
     t.integer  "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
+  end
+
+  create_table "file_attachments", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_file_attachments_on_comment_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
