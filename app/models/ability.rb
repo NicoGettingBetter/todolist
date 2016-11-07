@@ -10,6 +10,9 @@ class Ability
       can :manage, Comment do |comment|
         comment.task.project.user.id == user.id
       end
+      can :manage, FileAttachment do |file|
+        file.comment.task.project.user.id == user.id
+      end
     end
   end
 end

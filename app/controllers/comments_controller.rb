@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_current_user, :authenticate_user!
   load_and_authorize_resource
   
   def create

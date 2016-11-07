@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
+  before_action :set_current_user, :authenticate_user!
   load_and_authorize_resource  
-  before_action :authenticate_user!
   
   def index
-    respond_with Project.where(user_id: current_user)
+    respond_with Project.where(user_id: current_user.id)
   end
 
   def create

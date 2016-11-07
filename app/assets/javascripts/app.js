@@ -2,12 +2,20 @@ app = angular.module('TodoList', [
   'ui.router',
   'templates',
   'ng-rails-csrf',
-  'Devise',
-  'ngFileUpload'
+  'ngFileUpload',
+  'satellizer'
 ]);
 
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', 
+  function($stateProvider, $urlRouterProvider, $authProvider) {
   $urlRouterProvider.otherwise('/');
+
+  $authProvider.loginUrl = '/auth/login';
+  $authProvider.signupUrl = '/auth/signup';
+
+  $authProvider.facebook({
+    clientId: '689899577825670'
+  });
 
   $stateProvider
     .state('home', {
@@ -18,8 +26,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
           return projects.getAll();
         }]
       },
-      onEnter: ['$state', 'Auth', function($state, Auth) {
-        if (!Auth.isAuthenticated())
+      onEnter: ['$state', '$auth', function($state, $auth) {
+        if (!$auth.isAuthenticated())
           $state.go('login');
       }]
     })
@@ -27,25 +35,18 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       url: '/login',
       templateUrl: 'auth/_login.html',
       controller: 'AuthCtrl',
-      onEnter: ['$state', 'Auth', function($state, Auth) {
-        Auth.currentUser().then(function (){
+      onEnter: ['$state', '$auth', function($state, $auth) {
+        if ($auth.isAuthenticated())
           $state.go('home');
-        })
       }]
     })
     .state('register', {
       url: '/register',
       templateUrl: 'auth/_register.html',
       controller: 'AuthCtrl',
-      onEnter: ['$state', 'Auth', function($state, Auth) {
-        Auth.currentUser().then(function (){
+      onEnter: ['$state', '$auth', function($state, $auth) {
+        if ($auth.isAuthenticated())
           $state.go('home');
-        })
       }]
     })
 }]);
-
-app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.withCredentials = true;
-  }
-]);

@@ -3,10 +3,10 @@
     %span.input-group-btn
       %button.btn.btn-symbol{disabled: "disabled"}
         %span.glyphicon.glyphicon-list-alt
-    %input.form-control.project-input{"ng-model" => "project.title"}
+    %input.form-control.project-input{"ng-model" => "project.title", id: "project.{{project.id}}"}
     %span.input-group-btn
       %button.btn.project-btn-del{"ng-click" => "removeProject()"}
-        %span.glyphicon.glyphicon-remove
+        %span.project.glyphicon.glyphicon-remove
   %task-form{project: "project", flash: "flash"}
   %ul
     %task-item{"ng-repeat" => "task in project.tasks | orderBy:'priority'", task: "task", flash: "flash"}

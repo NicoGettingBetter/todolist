@@ -1,0 +1,8 @@
+<nav-ctrl></nav-ctrl>
+<div class='col-lg-2'></div>
+<div class='col-lg-8'>
+  <ul>
+    <project-item flash='flash' ng-repeat="project in projects | orderBy:'id'" project='project'></project-item>
+  </ul>
+  <project-form flash='flash'></project-form>
+</div>

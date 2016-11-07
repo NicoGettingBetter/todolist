@@ -1,0 +1,8 @@
+<div ng-repeat='message in flash.queue'>
+  <div class='flash' ng-class="'{{ message[0] }}'">
+    {{ message[1] }}
+    <div class='close' ng-click='flash.deleteFlash(message)'>
+      <span class='glyphicon glyphicon-remove'></span>
+    </div>
+  </div>
+</div>

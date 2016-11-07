@@ -1,0 +1,14 @@
+<li class='p5'>
+  <div class='input-group'>
+    <input class='form-control' id='comment.{{comment.id}}' ng-model='comment.text'>
+    <span class='input-group-btn'>
+      <button accept='image/*' class='btn btn-default' multiple='multiple' ngf-max-size='5MB' ngf-select='uploadFiles($files, $invalidFiles)'>
+        <span class='file glyphicon glyphicon-save'></span>
+      </button>
+      <button class='btn btn-default' ng-click='removeComment()'>
+        <span class='comment glyphicon glyphicon-remove'></span>
+      </button>
+    </span>
+  </div>
+  <file-item file='file' ng-repeat='file in comment.file_attachments'></file-item>
+</li>

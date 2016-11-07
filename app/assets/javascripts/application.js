@@ -16,10 +16,9 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
-//= require angular-devise
 //= require ng-file-upload
-
 //= require ng-rails-csrf
+//= require satellizer
 
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
@@ -34,3 +33,4 @@
 //= require_tree ./nav
 //= require_tree ./auth
 //= require_tree ./flash
+//= require bind-polyfill

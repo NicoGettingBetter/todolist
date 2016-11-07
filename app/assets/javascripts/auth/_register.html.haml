@@ -1,10 +1,12 @@
+%nav-ctrl
 .col-lg-3
 .col-lg-6
   .auth-header 
     %h1.auth-text Register
   %form{"ng-submit" => "register()"}
     .input-group.col-lg-12
-      %input.form-control{"ng-model" => "user.email", :placeholder => "Email", :type => "email"}
+      %input#email.form-control{"ng-model" => "user.email", :placeholder => "Email", :type => "email"}
     .input-group.col-lg-12
-      %input.form-control{"ng-model" => "user.password", :placeholder => "Password", :type => "password"}
-    %input.col-lg-12.btn.task-btn-add{:type => "submit", :value => "Register"}/
+      %input#password.form-control{"ng-model" => "user.password", :placeholder => "Password", :type => "password"}
+    %input.col-lg-12.btn.task-btn-add{:type => "submit", :value => "Register"}
+  %button.btn.col-lg-12.project-btn-add{"ng-click" => "authenticate('facebook')"} Sign in with Facebook

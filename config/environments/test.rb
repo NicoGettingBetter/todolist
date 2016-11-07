@@ -39,4 +39,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
+  config.action_dispatch.show_exceptions = true
+
+  config.allow_concurrency = true
+
+  config.assets.compile = false
 end
+
+Rails.application.routes.default_url_options[:host] = 'domain.com'
