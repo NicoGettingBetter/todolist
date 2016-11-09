@@ -15,6 +15,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.uid = auth[:uid]
       user.provider = 'facebook'
+      user.confirmed_at = Time.zone.now
     end
   end
 

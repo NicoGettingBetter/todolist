@@ -3,7 +3,7 @@ class AuthController < Devise::OmniauthCallbacksController
   respond_to :json
 
   def signup
-    @user = User.create auth_params
+    @user = User.create auth_params.merge(confirmed_at: Time.zone.now)
     
     if @user.id
       render json: { token: JWT.encode({user_id: @user.id}, '1a5b356e56c96ad') }
