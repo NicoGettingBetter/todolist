@@ -306,6 +306,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
   bootstrap-sass
+  bundler (~> 1.13.6)
   byebug
   cancancan
   capybara
