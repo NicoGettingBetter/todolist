@@ -24,9 +24,6 @@ app.controller('AuthCtrl', ['$scope', '$state', 'FlashMessage', '$auth',
 
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider).then(function(){
-      if (!$auth.isAuthenticated()) {
-        $('.facebook').click();
-      }
       $state.go('home');
     });
   };
