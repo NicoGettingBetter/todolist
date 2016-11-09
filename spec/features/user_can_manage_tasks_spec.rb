@@ -9,7 +9,7 @@ feature 'Test' do
     @task = FactoryGirl.create(:task, project: project)
     log_in_user user
     edit_task
-    wait_until_angular_ready
+    sleep 1
     expect((Task.find_by(id: @task.id)).title).to eq(new_title)
   end
 
@@ -17,24 +17,24 @@ feature 'Test' do
     log_in_user user
     expect(page).to have_css('button', text: 'Add task')
     fill_in_task_title_and_create
-    expect(page).to have_selector("input[id='task.1']")
+    sleep 1
+    expect(Project.find_by(id: project.id).tasks).to be_any
   end
 
   scenario 'user can delete task', :js do
     @task = FactoryGirl.create(:task, project: project)
     log_in_user user
-    wait_until_angular_ready
     delete_task
     wait_until_angular_ready
-    expect(page).not_to have_content('Add comment')
+    expect(Project.find_by(id: project.id).tasks).not_to be_any
   end
 
   private
 
     def fill_in_task_title_and_create
       expect(page).to have_selector("input[id='new-task-title']")
-      fill_in 'new-task-title', with: 'New task'
-      expect(find("input[id='new-task-title']").value).to eq('New task')
+      fill_in 'new-task-title', with: new_title
+      expect(find("input[id='new-task-title']").value).to eq("N")
       click_button('Add task')
     end
 

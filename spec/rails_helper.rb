@@ -19,14 +19,14 @@ require 'database_cleaner'
 require 'ffaker'
 require 'support/connection'
 
-Capybara.javascript_driver = :chrome
+Capybara.javascript_driver = :poltergeist
 Capybara.default_driver = :poltergeist
 Capybara.run_server = true
 Capybara.server_port = 7000
 Capybara.app_host = "http://localhost:#{Capybara.server_port}"
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Poltergeist::Driver.new(app, { browser: :chrome, inspector: true, timeout: 10000})
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, { inspector: true, timeout: 1000 })
 end
 
 ActiveRecord::Migration.maintain_test_schema!

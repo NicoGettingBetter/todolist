@@ -6,16 +6,17 @@ feature 'Comment' do
   let!(:task) { FactoryGirl.create(:task, project: project) }
   let(:new_text) { "N" }
 
-  scenario 'user can edit comment text', :js do
+  scenario 'user can edit comment text', js: true do
     @comment = FactoryGirl.create(:comment, task: task)
     log_in_user user
     show_comments
-    edit_comment
     wait_until_angular_ready
-    expect(find("input[id='comment.1']").value).to eq(new_text)
+    edit_comment
+    sleep 1
+    expect(Comment.last.text).to eq(new_text)
   end
 
-  scenario 'user can create comment', :js do
+  scenario 'user can create comment', js: true do
     log_in_user user
     show_comments
     wait_until_angular_ready
@@ -25,10 +26,11 @@ feature 'Comment' do
     expect(Comment.last).not_to be_nil
   end
 
-  scenario 'user can delete comment', :js do
+  scenario 'user can delete comment', js: true do
     @comment = FactoryGirl.create(:comment, task: task)
     log_in_user user
     show_comments
+    wait_until_angular_ready
     delete_comment
     wait_until_angular_ready
     expect(page).not_to have_selector("input[id='comment.1']")

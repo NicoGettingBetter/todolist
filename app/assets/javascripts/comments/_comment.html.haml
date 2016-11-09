@@ -2,8 +2,8 @@
   .input-group
     %input.form-control{"ng-model" => "comment.text", id: "comment.{{comment.id}}"}
     %span.input-group-btn
-      %button.btn.btn-default{:accept => "image/*", :multiple => "multiple", "ngf-max-size" => "5MB", "ngf-select" => "uploadFiles($files, $invalidFiles)"}
-        %span.file.glyphicon.glyphicon-save
+      %button.btn.btn-default{accept: "image/*", multiple: "multiple", "ngf-max-size" => "5MB", "ngf-select" => "uploadFiles($files, $invalidFiles)", name: 'file_attachments'}
+        %span.glyphicon.glyphicon-save
       %button.btn.btn-default{"ng-click" => "removeComment()"}
         %span.comment.glyphicon.glyphicon-remove
   

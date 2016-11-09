@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'features/support/env'
 
 feature 'Authentication' do
   scenario 'user can log in by email and password', js: true do

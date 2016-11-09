@@ -17,6 +17,7 @@ feature 'Test' do
 
   scenario 'user can edit task done field', js: true do
     log_in_user user
+    wait_until_angular_ready
     make_done
     wait_until_angular_ready
     expect((Task.find_by(id: task.id)).done).to be true
@@ -51,6 +52,8 @@ feature 'Test' do
 
     def make_done
       expect(page).to have_css("input[type='checkbox']")
+      wait_until_angular_ready
+      puts 2
       find("input[type='checkbox']").click     
     end
 
