@@ -53836,14 +53836,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
 // source: app/assets/javascripts/auth/_login.html.haml
 
 angular.module("templates").run(["$templateCache", function($templateCache) {
-  $templateCache.put("auth/_login.html", "<nav-ctrl></nav-ctrl>\n<div class='col-lg-3'></div>\n<div class='col-lg-6'>\n  <div class='auth-header'>\n    <h1 class='auth-text'>Log In</h1>\n  </div>\n  <form ng-submit='login()'>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='email' ng-model='user.email' placeholder='Email' type='email'>\n    </div>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='password' ng-model='user.password' placeholder='Password' type='password'>\n    </div>\n    <input class='btn col-lg-12 task-btn-add' type='submit' value='Log In'>\n  </form>\n  <button class='btn col-lg-12 project-btn-add' ng-click=\"authenticate('facebook')\">Sign in with Facebook</button>\n</div>")
+  $templateCache.put("auth/_login.html", "<nav-ctrl></nav-ctrl>\n<div class='col-lg-3'></div>\n<div class='col-lg-6'>\n  <div class='auth-header'>\n    <h1 class='auth-text'>Log In</h1>\n  </div>\n  <form ng-submit='login()'>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='email' ng-model='user.email' placeholder='Email' type='email'>\n    </div>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='password' ng-model='user.password' placeholder='Password' type='password'>\n    </div>\n    <input class='btn col-lg-12 task-btn-add' type='submit' value='Log In'>\n  </form>\n  <button class='facebook btn col-lg-12 project-btn-add' ng-click=\"authenticate('facebook')\">Sign in with Facebook</button>\n</div>")
 }]);
 
 // Angular Rails Template
 // source: app/assets/javascripts/auth/_register.html.haml
 
 angular.module("templates").run(["$templateCache", function($templateCache) {
-  $templateCache.put("auth/_register.html", "<nav-ctrl></nav-ctrl>\n<div class='col-lg-3'></div>\n<div class='col-lg-6'>\n  <div class='auth-header'>\n    <h1 class='auth-text'>Register</h1>\n  </div>\n  <form ng-submit='register()'>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='email' ng-model='user.email' placeholder='Email' type='email'>\n    </div>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='password' ng-model='user.password' placeholder='Password' type='password'>\n    </div>\n    <input class='col-lg-12 btn task-btn-add' type='submit' value='Register'>\n  </form>\n  <button class='btn col-lg-12 project-btn-add' ng-click=\"authenticate('facebook')\">Sign in with Facebook</button>\n</div>")
+  $templateCache.put("auth/_register.html", "<nav-ctrl></nav-ctrl>\n<div class='col-lg-3'></div>\n<div class='col-lg-6'>\n  <div class='auth-header'>\n    <h1 class='auth-text'>Register</h1>\n  </div>\n  <form ng-submit='register()'>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='email' ng-model='user.email' placeholder='Email' type='email'>\n    </div>\n    <div class='input-group col-lg-12'>\n      <input class='form-control' id='password' ng-model='user.password' placeholder='Password' type='password'>\n    </div>\n    <input class='col-lg-12 btn task-btn-add' type='submit' value='Register'>\n  </form>\n  <button class='facebook btn col-lg-12 project-btn-add' ng-click=\"authenticate('facebook')\">Sign in with Facebook</button>\n</div>")
 }]);
 
 app = angular.module('TodoList');
@@ -54482,7 +54482,7 @@ app.controller('AuthCtrl', ['$scope', '$state', 'FlashMessage', '$auth',
 // source: app/assets/javascripts/comments/_comment.html.haml
 
 angular.module("templates").run(["$templateCache", function($templateCache) {
-  $templateCache.put("comments/_comment.html", "<li class='p5'>\n  <div class='input-group'>\n    <input class='form-control' id='comment.{{comment.id}}' ng-model='comment.text'>\n    <span class='input-group-btn'>\n      <button accept='image/*' class='btn btn-default' multiple='multiple' name='file_attachments' ngf-max-size='5MB' ngf-select='uploadFiles($files, $invalidFiles)'>\n        <input accept='image/*' multiple='multiple' name='file_attachments' ngf-max-size='5MB' ngf-select='uploadFiles($files, $invalidFiles)' type='file'>\n        <span class='glyphicon glyphicon-save'></span>\n      </button>\n      <button class='btn btn-default' ng-click='removeComment()'>\n        <span class='comment glyphicon glyphicon-remove'></span>\n      </button>\n    </span>\n  </div>\n  <file-item file='file' ng-repeat='file in comment.file_attachments'></file-item>\n</li>")
+  $templateCache.put("comments/_comment.html", "<li class='p5'>\n  <div class='input-group'>\n    <input class='form-control' id='comment.{{comment.id}}' ng-model='comment.text'>\n    <span class='input-group-btn'>\n      <button accept='image/*' class='btn btn-default' multiple='multiple' name='file_attachments' ngf-max-size='5MB' ngf-select='uploadFiles($files, $invalidFiles)'>\n        <span class='glyphicon glyphicon-save'></span>\n      </button>\n      <button class='btn btn-default' ng-click='removeComment()'>\n        <span class='comment glyphicon glyphicon-remove'></span>\n      </button>\n    </span>\n  </div>\n  <file-item file='file' ng-repeat='file in comment.file_attachments'></file-item>\n</li>")
 }]);
 
 // Angular Rails Template
@@ -54512,6 +54512,7 @@ app.directive('commentForm', function(){
           task_id: $scope.task.id,
           file: $scope.file
         }).success(function(data){
+          data.file_attachments = [];
           if ($scope.task.comments)
             $scope.task.comments.push(data);
           else
@@ -54552,7 +54553,7 @@ app.directive('commentItem', function(){
       $scope.uploadFiles = function(files, errFiles) {
         $scope.files = files;
         $scope.errFiles = errFiles;
-        console.log($scope.files);
+        
         angular.forEach(files, function(file) {
           var task;
           projects.projects.find(function(project){

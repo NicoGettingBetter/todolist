@@ -18,6 +18,7 @@ app.directive('commentForm', function(){
           task_id: $scope.task.id,
           file: $scope.file
         }).success(function(data){
+          data.file_attachments = [];
           if ($scope.task.comments)
             $scope.task.comments.push(data);
           else

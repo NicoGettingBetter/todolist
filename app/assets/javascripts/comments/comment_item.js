@@ -27,7 +27,7 @@ app.directive('commentItem', function(){
       $scope.uploadFiles = function(files, errFiles) {
         $scope.files = files;
         $scope.errFiles = errFiles;
-        console.log($scope.files);
+        
         angular.forEach(files, function(file) {
           var task;
           projects.projects.find(function(project){
