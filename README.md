@@ -21,8 +21,8 @@ I'm a person who passionate about own productivity. I want to manage my tasks an
 ### Technical requirements
 
 1. It should be a WEB application
-1.1. For the client side must be used: HTML5, CSS3, Twitter Bootstrap, JavaScript, AngularJS, jQuery.
-1.2. For server side Ruby on Rails.
+  * For the client side must be used: HTML5, CSS3, Twitter Bootstrap, JavaScript, AngularJS, jQuery.
+  * For server side Ruby on Rails.
 2. It should have client side and server side validation.
 3. It should look like on screens (see attached file ‘rg_test_task_grid.png’).
 4. It should work like one page WEB application and should use AJAX technology, load and submit data without reloading a page.
