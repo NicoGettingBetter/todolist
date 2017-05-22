@@ -1,0 +1,38 @@
+<li class='p5'>
+  <div class='input-group'>
+    <span class='input-group-addon'>
+      <input ng-model='task.done' type='checkbox'>
+    </span>
+    <input class='form-control' id='task.{{task.id}}' ng-model='task.title'>
+    <div class='input-group-btn'>
+      <button class='btn btn-default' disabled='disabled'>{{ priorities[task.priority] }}</button>
+      <button class='btn btn-default' ng-click='higher()'>
+        <span class='glyphicon glyphicon-chevron-up'></span>
+      </button>
+      <button class='btn btn-default' ng-click='lower()'>
+        <span class='glyphicon glyphicon-chevron-down'></span>
+      </button>
+      <button class='btn btn-default' ng-click='toggleDate()'>
+        <span class='glyphicon glyphicon-calendar'></span>
+      </button>
+      <button class='btn btn-default' ng-click='toggleComments()'>
+        <span class='glyphicon glyphicon-comment'></span>
+      </button>
+      <button class='btn btn-default' ng-click='removeTask()'>
+        <span class='task glyphicon glyphicon-remove'></span>
+      </button>
+    </div>
+  </div>
+  <div class='input-group date' ng-hide='task.hideDate'>
+    <input class='form-control' id='task.{{task.id}}.date' ng-model='date'>
+    <span class='input-group-addon'>
+      <i class='glyphicon glyphicon-th'></i>
+    </span>
+  </div>
+  <div ng-hide='task.hideComments'>
+    <comment-form flash='flash' task='task'></comment-form>
+    <ul>
+      <comment-item comment='comment' flash='flash' ng-repeat="comment in task.comments | orderBy:'id'"></comment-item>
+    </ul>
+  </div>
+</li>

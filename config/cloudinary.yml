@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: djivttx9q
+  api_key: '179769577496664'
+  api_secret: xH080_pd5AjvDWDnOcrljWxq3RU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: djivttx9q
+  api_key: '179769577496664'
+  api_secret: xH080_pd5AjvDWDnOcrljWxq3RU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: djivttx9q
+  api_key: '179769577496664'
+  api_secret: xH080_pd5AjvDWDnOcrljWxq3RU
+  enhance_image_tag: true
+  static_image_support: false

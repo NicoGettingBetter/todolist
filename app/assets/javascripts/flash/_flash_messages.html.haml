@@ -1,0 +1,5 @@
+%div{"ng-repeat" => "message in flash.queue"}
+  .flash{"ng-class" => "'{{ message[0] }}'"}
+    {{ message[1] }}
+    .close{"ng-click" => "flash.deleteFlash(message)"}
+      %span.glyphicon.glyphicon-remove

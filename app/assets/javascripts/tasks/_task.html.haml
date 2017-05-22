@@ -1,0 +1,25 @@
+%li.p5
+  .input-group
+    %span.input-group-addon
+      %input{type: "checkbox", "ng-model" => "task.done"}
+    %input.form-control{"ng-model" => "task.title", id: "task.{{task.id}}"}
+    .input-group-btn
+      %button.btn.btn-default{disabled: "disabled"} {{ priorities[task.priority] }}
+      %button.btn.btn-default{"ng-click" => "higher()"} 
+        %span.glyphicon.glyphicon-chevron-up
+      %button.btn.btn-default{"ng-click" => "lower()"}
+        %span.glyphicon.glyphicon-chevron-down
+      %button.btn.btn-default{"ng-click" => "toggleDate()"}
+        %span.glyphicon.glyphicon-calendar
+      %button.btn.btn-default{"ng-click" => "toggleComments()"}
+        %span.glyphicon.glyphicon-comment
+      %button.btn.btn-default{"ng-click" => "removeTask()"}
+        %span.task.glyphicon.glyphicon-remove
+  .input-group.date{"ng-hide" => "task.hideDate"}
+    %input.form-control{"ng-model" => "date", id: "task.{{task.id}}.date"}
+    %span.input-group-addon
+      %i.glyphicon.glyphicon-th
+  %div{"ng-hide" => "task.hideComments"}
+    %comment-form{task: "task", flash: "flash"}
+    %ul
+      %comment-item{"ng-repeat" => "comment in task.comments | orderBy:'id'", comment: "comment", flash: "flash"}

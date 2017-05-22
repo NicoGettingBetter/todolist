@@ -1,0 +1,19 @@
+<li class='project-item'>
+  <div class='input-group project-head'>
+    <span class='input-group-btn'>
+      <button class='btn btn-symbol' disabled='disabled'>
+        <span class='glyphicon glyphicon-list-alt'></span>
+      </button>
+    </span>
+    <input class='form-control project-input' id='project.{{project.id}}' ng-model='project.title'>
+    <span class='input-group-btn'>
+      <button class='btn project-btn-del' ng-click='removeProject()'>
+        <span class='project glyphicon glyphicon-remove'></span>
+      </button>
+    </span>
+  </div>
+  <task-form flash='flash' project='project'></task-form>
+  <ul>
+    <task-item flash='flash' ng-repeat="task in project.tasks | orderBy:'priority'" task='task'></task-item>
+  </ul>
+</li>

@@ -1,0 +1,10 @@
+.nav-header.collapse.navbar-collapse
+  %ul.nav.navbar-nav
+    %li{"ng-hide" => "isAuthenticated"}
+      %a.nav-link{href: "#/login"} Log In
+    %li{"ng-hide" => "isAuthenticated"}
+      %a.nav-link{href: "#/register"} Register
+    %li{"ng-show" => "isAuthenticated"}
+      %a.nav-link{"ng-click" => "logout()"} 
+        Log Out
+%flash-messages{flash: "flash"}

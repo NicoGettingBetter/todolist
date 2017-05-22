@@ -1,0 +1,17 @@
+<nav-ctrl></nav-ctrl>
+<div class='col-lg-3'></div>
+<div class='col-lg-6'>
+  <div class='auth-header'>
+    <h1 class='auth-text'>Register</h1>
+  </div>
+  <form ng-submit='register()'>
+    <div class='input-group col-lg-12'>
+      <input class='form-control' id='email' ng-model='user.email' placeholder='Email' type='email'>
+    </div>
+    <div class='input-group col-lg-12'>
+      <input class='form-control' id='password' ng-model='user.password' placeholder='Password' type='password'>
+    </div>
+    <input class='col-lg-12 btn task-btn-add' type='submit' value='Register'>
+  </form>
+  <button class='facebook btn col-lg-12 project-btn-add' ng-click="authenticate('facebook')">Sign in with Facebook</button>
+</div>
